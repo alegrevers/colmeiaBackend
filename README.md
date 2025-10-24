@@ -22,7 +22,13 @@ npx prisma generate
 npx prisma db push
 ```
 
-### 4. Inicie a aplicação
+### 4. Instale as dependências
+
+```bash
+npm install
+```
+
+### 5. Inicie a aplicação
 
 ```bash
 npm run dev
