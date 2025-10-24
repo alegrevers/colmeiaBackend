@@ -5,8 +5,8 @@
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/pix-gateway-api.git
-cd pix-gateway-api
+git clone https://github.com/alegrevers/colmeiaBackend.git
+cd colmeiaBackend
 ```
 
 ### 2. Configure variáveis de ambiente
