@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  document  String   @unique
+  phone     String?
+  createdAt DateTime @default(now())
+  charges   Charge[]
+}
+
+model Charge {
+  id             String   @id @default(uuid())
+  customer       Customer @relation(fields: [customerId], references: [id])
+  customerId     String
+  amount         Int
+  currency       String   @default("BRL")
+  paymentMethod  String
+  status         String   @default("pending")
+  metadata       Json?
+  paymentDetails Json?
+  createdAt      DateTime @default(now())
+  expiresAt      DateTime?
+}
+
+model IdempotencyKey {
+  id             String   @id @default(uuid())
+  key            String   @unique
+  requestMethod  String
+  requestPath    String
+  responseStatus Int?
+  responseBody   Json?
+  createdAt      DateTime @default(now())
+}
